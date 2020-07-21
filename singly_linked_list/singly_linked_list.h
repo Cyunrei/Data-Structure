@@ -17,12 +17,11 @@ typedef short int bool;   //Define boolean type.
 
 typedef int elem_datatype;   //Define element data type.
 
+/*Define singly linked list.*/
 typedef struct node {
     elem_datatype data;   //Declare node data domain.
     struct node *next;   //Declare node pointer domain (Point to the next node).
-} node;
-
-typedef node *sl_list;   //Define singly linked list.
+} node, *sl_list;
 
 /**
  * Initialize singly linked list by head insert method.
