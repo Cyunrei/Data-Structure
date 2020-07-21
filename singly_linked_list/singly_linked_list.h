@@ -75,7 +75,7 @@ sl_list sl_list_init_tail(sl_list *list, const elem_datatype *array, int length)
  * Delete singly linked list.
  * @author cyunrei
  * @data July 20 2020
- * @param list {sl_list} Operated single linked list.
+ * @param list {sl_list} Operated singly linked list.
  * @return {bool} If return is true,the operation is successful.
  */
 
@@ -92,10 +92,10 @@ bool sl_list_del(sl_list *list) {
 }
 
 /**
- * Insert a node of single linked list by node index(Between head and tail).
+ * Insert a node of singly linked list by node index(Between head and tail).
  * @author cyunrei
  * @data July 20 2020
- * @param list {sl_list} Operated single linked list.
+ * @param list {sl_list} Operated singly linked list.
  * @param index {int} Target node index(Begin from 1).
  * @return {bool} If return is true,the operation is successful.
  */
@@ -113,10 +113,10 @@ bool sl_list_insert_node(sl_list *list, int index, elem_datatype elem) {
 }
 
 /**
- * Delete a node of single linked list by node index.
+ * Delete a node of singly linked list by node index.
  * @author cyunrei
  * @data July 20 2020
- * @param list {sl_list} Operated single linked list.
+ * @param list {sl_list} Operated singly linked list.
  * @param index {int} Target node index(Begin from 1).
  * @return {bool} If return is true,the operation is successful.
  */
@@ -133,17 +133,17 @@ bool sl_list_del_node(sl_list *list, int index) {
 }
 
 /**
- * Traverse single linked list.
+ * Traverse singly linked list and print node info.
  * @author cyunrei
  * @data July 20 2020
- * @param list {sl_list} Operated single linked list.
+ * @param list {sl_list} Operated singly linked list.
  */
 
 void sl_list_traverse(sl_list *list) {
     sl_list dynamic_node;
-    int i;
-    for (i = 1, dynamic_node = (*list)->next; dynamic_node; i++, dynamic_node = dynamic_node->next)
-        printf("node %3d | address %p | value %d\n", i, dynamic_node, dynamic_node->data);
+    int index;
+    for (index = 1, dynamic_node = (*list)->next; dynamic_node; index++, dynamic_node = dynamic_node->next)
+        printf("node %3d | address %p | value %d\n", index, dynamic_node, dynamic_node->data);
 }
 
 #endif //DATA_STRUCTURE_SINGLY_LINKED_LIST_H
