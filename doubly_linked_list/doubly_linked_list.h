@@ -34,21 +34,7 @@ typedef struct dual_node {
  * @return {dl_list} Doubly linked list after initialization.
  */
 
-dl_list dl_list_init_head(dl_list *list, const elem_datatype *array, int length) {
-    dl_list new_node;
-    *list = (dl_list) malloc(sizeof(dual_node));
-    (*list)->prior = NULL;
-    (*list)->next = NULL;
-    for (int i = 0; i < length; i++) {
-        new_node = (dl_list) malloc(sizeof(dual_node));
-        new_node->data = array[i];
-        new_node->next = (*list)->next;
-        if ((*list)->next != NULL) (*list)->next->prior = new_node;
-        (*list)->next = new_node;
-        new_node->prior = *list;
-    }
-    return *list;
-}
+dl_list dl_list_init_head(dl_list *list, const elem_datatype *array, int length);
 
 /**
  * Initialize doubly linked list by tail insert method.
@@ -60,20 +46,7 @@ dl_list dl_list_init_head(dl_list *list, const elem_datatype *array, int length)
  * @return {dl_list} Doubly linked list after initialization.
  */
 
-dl_list dl_list_init_tail(dl_list *list, const elem_datatype *array, int length) {
-    *list = (dl_list) malloc(sizeof(dual_node));
-    (*list)->prior = NULL;
-    (*list)->next = NULL;
-    int i;
-    dl_list new_node, dynamic_node;
-    for (i = 0, dynamic_node = (*list); i < length; i++, dynamic_node->next = new_node, dynamic_node = new_node) {
-        new_node = (dl_list) malloc(sizeof(dual_node));
-        new_node->data = array[i];
-        new_node->prior = dynamic_node;
-    }
-    new_node->next = NULL;
-    return *list;
-}
+dl_list dl_list_init_tail(dl_list *list, const elem_datatype *array, int length);
 
 /**
  * Traverse doubly linked list and print node info.
@@ -82,30 +55,7 @@ dl_list dl_list_init_tail(dl_list *list, const elem_datatype *array, int length)
  * @param list {dl_list} Operated doubly linked list.
  */
 
-void dl_list_traverse(dl_list *list, bool reverse) {
-    dl_list dynamic_node;
-    int index;
-    if (!reverse) {
-        for (index = 1, dynamic_node = (*list)->next; dynamic_node; dynamic_node = dynamic_node->next, index++) {
-            if (dynamic_node->next)
-                printf("node %3d | address %p | prior %3d | value %3d | next %3d\n", index, dynamic_node,
-                       dynamic_node->prior->data, dynamic_node->data, dynamic_node->next->data);
-            else
-                printf("node %3d | address %p | prior %3d | value %3d | next %3d\n", index, dynamic_node,
-                       dynamic_node->prior->data, dynamic_node->data, 0);
-        }
-    } else {
-        for (index = 1, dynamic_node = (*list)->next; dynamic_node->next; index++, dynamic_node = dynamic_node->next);
-        for (; dynamic_node; dynamic_node = dynamic_node->prior, index--) {
-            if (!dynamic_node->next)
-                printf("node %3d | address %p | prior %3d | value %3d | next %3d\n", index, dynamic_node,
-                       dynamic_node->prior->data, dynamic_node->data, 0);
-            else
-                printf("node %3d | address %p | prior %3d | value %3d | next %3d\n", index, dynamic_node,
-                       dynamic_node->prior->data, dynamic_node->data, dynamic_node->next->data);
-        }
-    }
-}
+void dl_list_traverse(dl_list *list, bool reverse);
 
 /**
  * Delete a node of doubly linked list.
@@ -116,17 +66,7 @@ void dl_list_traverse(dl_list *list, bool reverse) {
  * @return {bool} If return is true,the operation is successful.
  */
 
-bool dl_list_del_node(dl_list *list, int index) {
-    dl_list dynamic_node, temp_node;
-    int i;
-    for (i = 1, dynamic_node = *list; dynamic_node && i < index; i++, dynamic_node = dynamic_node->next);
-    if (!dynamic_node || index > i) return false;
-    temp_node = dynamic_node->next;
-    dynamic_node->next = temp_node->next;
-    if (temp_node->next != NULL) temp_node->next->prior = dynamic_node;
-    free(temp_node);
-    return true;
-}
+bool dl_list_del_node(dl_list *list, int index);
 
 /**
  * Insert a node element of doubly linked list(Between head and tail).
@@ -138,20 +78,7 @@ bool dl_list_del_node(dl_list *list, int index) {
  * @return {bool} If return is true,the operation is successful.
  */
 
-bool dl_list_insert_node(dl_list *list, int index, elem_datatype elem) {
-    dl_list dynamic_node, new_node;
-    int i;
-    for (i = 1, dynamic_node = *list; dynamic_node && i < index; i++, dynamic_node = dynamic_node->next);
-    if (!dynamic_node || index > i) return false;
-    new_node = (dl_list) malloc(sizeof(dual_node));
-    new_node->data = elem;
-    new_node->prior = dynamic_node;
-    new_node->next = dynamic_node->next;
-    dynamic_node->next = new_node;
-    new_node->next->prior = new_node;
-    return true;
-}
-
+bool dl_list_insert_node(dl_list *list, int index, elem_datatype elem);
 
 /**
  * Doubly linked list sort.
@@ -161,9 +88,7 @@ bool dl_list_insert_node(dl_list *list, int index, elem_datatype elem) {
  * @param reverse {bool} Whether to sort from large to small(reverse equal true).
  */
 
-void dl_list_sort(dl_list *list, bool reverse) {
-    //TODO
-}
+void dl_list_sort(dl_list *list, bool reverse);
 
 /**
  * Delete doubly linked list.
@@ -173,16 +98,6 @@ void dl_list_sort(dl_list *list, bool reverse) {
  * @return {bool} If return is true,the operation is successful.
  */
 
-bool dl_list_del(dl_list *list) {
-    dl_list node, next_node;
-    node = (*list)->next;
-    while (node) {
-        next_node = node->next;
-        free(node);
-        node = next_node;
-    }
-    (*list)->next = NULL;
-    return true;
-}
+bool dl_list_del(dl_list *list);
 
 #endif //DATA_STRUCTURE_DOUBLY_LINKED_LIST_H
