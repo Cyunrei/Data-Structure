@@ -86,9 +86,10 @@ bool dcl_list_del_node(dcl_list *list, int index);
  * @data July 23 2020
  * @param list {dcl_list} Operated doubly circular linked list.
  * @param traverse_count {int} Traverse count.
+ * @param reverse {bool} Reverse traverse doubly circular list.
  */
 
-void dcl_list_traverse(dcl_list *list,int traverse_count);
+void dcl_list_traverse(dcl_list *list, int traverse_count, bool reserve);
 
 
 #endif //DATA_STRUCTURE_DOUBLY_CIRCULAR_LINKED_LIST_H
