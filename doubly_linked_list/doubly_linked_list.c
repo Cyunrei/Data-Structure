@@ -60,6 +60,7 @@ dl_list dl_list_init_tail(dl_list *list, const elem_datatype *array, int length)
  * @author cyunrei
  * @data July 21 2020
  * @param list {dl_list} Operated doubly linked list.
+ * @param reverse {bool} Reverse traverse doubly list.
  */
 
 void dl_list_traverse(dl_list *list, bool reverse) {
