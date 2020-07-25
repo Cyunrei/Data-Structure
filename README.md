@@ -15,3 +15,4 @@ Doubly circular linked list | [doubly_circular_linked_list.h](https://github.com
 Data Structure | Header file | Source file | Demo file 
 :--- | :--- | :--- | :--- 
 Sequential stack | [sequential_stack.h](https://github.com/Cyunrei/Data-Structure/blob/master/sequential_stack/sequential_stack.h) | [sequential_stack.c](https://github.com/Cyunrei/Data-Structure/blob/master/sequential_stack/sequential_stack.c) | [demo.c](https://github.com/Cyunrei/Data-Structure/blob/master/sequential_stack/demo.c)
+Linked stack | [linked_stack.h](https://github.com/Cyunrei/Data-Structure/blob/master/linked_stack/linked_stack.h) | [linked_stack.c](https://github.com/Cyunrei/Data-Structure/blob/master/linked_stack/linked_stack.c) | [demo.c](https://github.com/Cyunrei/Data-Structure/blob/master/linked_stack/demo.c)
