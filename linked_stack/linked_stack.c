@@ -8,7 +8,7 @@
  * Initialize linked stack.
  * @author cyunrei
  * @data July 25 2020
- * @return {sq_stack} Linked stack after initialization.
+ * @return {linked_stack} Linked stack after initialization.
  */
 
 linked_stack linked_stack_init() {
